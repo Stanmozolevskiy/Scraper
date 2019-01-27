@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+            <div class="jumbotron">
+                    <h1>Cheep apartments</h1>
+                    <h3>The greatest resource in the galaxy for Cheep apartments!</h3>
+                    <hr>
+                   
+            </div>
+            <div class="card mb-4"> 
+        <div id="stats"> </div>
+    </div>
+
+        <script>
+
+ $.ajax({ url: "/api/results", method: "GET" })
+      .then(function(results) {
+
+
+$("#stats").empty();
+
+
+for (let i = 0; i < results.length; i++) {
+
+
+  var tr = $("<p>").append(
+
+    $("<p>").text(results[i].title),
+    $(`<a href=${results[i].link}></a>`).text(results[i].price),
+    
+  );
+
+  $("#stats").append(tr);
+
+    }
+      })
+        
+
+</script>
+    </body>
+</html>
